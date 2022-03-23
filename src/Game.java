@@ -1,10 +1,12 @@
 public class Game {
     public static void main(String[] args) {
 
+        Guns pistol = new Guns (5,0.3,20);
         //I create 3 player object. Object properties in "Player" class.
-        Player kayla = new Player(false,"Kayla");
-        Player katie = new Player(false,"Katie");
-        Player joseph = new Player(true,"Joseph");
+        Player kayla = new Player(pistol,false,"Kayla");
+        Player katie = new Player(pistol,false,"Katie");
+        Player joseph = new Player(pistol,true,"Joseph");
+
 
 
         //use methods

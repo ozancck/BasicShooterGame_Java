@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 public class Player {
 
@@ -6,7 +7,7 @@ public class Player {
     private int healt=100;
     private int money=1000;
     private boolean terorist;
-    private int bullet = 20;
+    private Guns gun;
 
 
     //first method about shooting. Choose who you want to shoot.
@@ -21,18 +22,20 @@ public class Player {
             //random for 0.3 misfired possibility.
             // if number in 0<= number <7, there is no misfired but,
             // number in 7<= number <10, there is misfired
-            double number =(double)(Math.random()*10);
+            double number =(double)(Math.random());
+            double _number = Double.parseDouble(new DecimalFormat("0.0").format(number));
 
-            if (number<7) {
+            if (_number >=this.getGuns().getMisFired()) {
 
                 // health 20 decreasing
                 y.healt-=20;
                 if (y.healt>=0){
                     //bullet decreasing
-                    this.bullet-=1;
+                    //this.bullet-=1;
+                    getGuns().bulletDecreased();
 
                     System.out.println("Success! pinpoint accuracy!");
-                    System.out.println("Info: There are "+this.bullet+ " bullet(s) left in "+this.name+"'s magazine.");
+                    System.out.println("Info: There are "+getGuns().getBullets()+ " bullet(s) left in "+this.name+"'s magazine.");
                     System.out.println("Info: "+y.name+"'s health level is decreased to "+y.healt+".");
                 }
                 else {
@@ -43,7 +46,8 @@ public class Player {
 
             }
             else {
-                this.bullet-=1;
+                //this.bullet-=1;
+                gun.bulletDecreased();
                 System.out.println("Failed! Pistol misfired!");
             }
 
@@ -70,13 +74,13 @@ public class Player {
         //"lls" is a constant. For need bullet.
         //new bullet will be 20
         //We paid for needBullet
-        int lls = 20;
-        int needBullet = lls-this.bullet;
-        this.setBullet(20);
-        this.money-=needBullet*5;
+        //int needBullet = lls-this.bullet;
+        int needBullet = gun.getA() -gun.getBullets();
+        gun.reload();
+        this.money-=needBullet* gun.getBulletCost();
 
         System.out.println("Success! The real war begins now!");
-        System.out.println("Info: kayla has now "+this.bullet+" bullets in the magazine!");
+        System.out.println("Info: kayla has now "+gun.getBullets()+" bullets in the magazine!");
         System.out.println("Info: kayla has now "+this.money+" dollars!");
     }
 
@@ -96,10 +100,12 @@ public class Player {
 
 
 
-    public Player(boolean terorist, String name ){
+    public Player(Guns gun, boolean terorist, String name ){
         this.setTerorist(terorist);
         this.setName(name);
+        this.setGuns(gun);
     }
+
 
     //encapsulation(setter, getter.
     public String getName() {
@@ -135,11 +141,11 @@ public class Player {
     }
 
 
-    public int getBullet() {
-        return bullet;
+    public Guns getGuns() {
+        return gun;
     }
 
-    public void setBullet(int bullet) {
-        this.bullet = bullet;
+    public void setGuns(Guns guns) {
+        this.gun = guns;
     }
 }
