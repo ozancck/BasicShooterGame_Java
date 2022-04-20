@@ -1,33 +1,33 @@
-public class FireArms extends RangedWeapon{
+public class Firearms extends RangedW{
 
 
-    private double misfiredRate=30;
-    private int ammo=20;
+    private double misfired=30;
+    private int bullet=20;
 
-    public FireArms(String name, int damage, int cost, int affaectiveRange) {
+    public Firearms(String name, int damage, int cost, int affaectiveRange) {
         super(name, damage, cost, affaectiveRange);
     }
 
     @Override
-    public double getMisfiredRate() {
-        return misfiredRate;
+    public double getMisfired() {
+        return misfired;
     }
 
     @Override
-    public void setMisfiredRate(double misfiredRate) {
-        this.misfiredRate = misfiredRate;
+    public void setMisfired(double misfiredRate) {
+        this.misfired = misfired;
     }
 
 
 
 
     @Override
-    public int getAmmo() {
-        return ammo;
+    public int getBullet() {
+        return bullet;
     }
 
     @Override
-    public void setAmmo(int ammo) {
-        this.ammo = ammo;
+    public void setBullet(int bullet) {
+        this.bullet = bullet;
     }
 }

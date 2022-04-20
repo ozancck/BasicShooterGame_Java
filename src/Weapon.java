@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Weapon {
-    private int ammo;
-    private double misfiredRate;
+    private int bullet;
+    private double misfired;
     private String name;
     private int damage;
     private int cost;
@@ -17,20 +17,20 @@ public class Weapon {
         this.affectiveRange=affectiveRange;
     }
 
-    public int getAmmo() {
-        return ammo;
+    public int getBullet() {
+        return bullet;
     }
 
-    public void setAmmo(int ammo) {
-        this.ammo = ammo;
+    public void setBullet(int ammo) {
+        this.bullet = ammo;
     }
 
-    public double getMisfiredRate() {
-        return misfiredRate;
+    public double getMisfired() {
+        return misfired;
     }
 
-    public void setMisfiredRate(double misfiredRate) {
-        this.misfiredRate = misfiredRate;
+    public void setMisfired(double misfiredRate) {
+        this.misfired = misfiredRate;
     }
 
     public String getName() {
